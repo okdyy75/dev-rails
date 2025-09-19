@@ -1,0 +1,9 @@
+one:
+  title: "First todo"
+  description: "Sample description"
+  completed: false
+
+two:
+  title: "Completed todo"
+  description:
+  completed: true
