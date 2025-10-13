@@ -26,6 +26,10 @@ docker compose build
 # バックグラウンドで起動
 docker compose up -d
 
+# デバッグ用にrdbgインストール
+docker compose exec api gem install rdbg
+
+
 # DBの初期化
 docker compose exec api bin/rails db:drop
 docker compose exec api bin/rails db:setup
@@ -40,6 +44,9 @@ docker compose exec api bin/rails db:reset
 ## コマンド
 
 ```bash
+# ruby環境の検証
+docker run --rm -it -v ./apps/api:/rails -w /rails ruby:3.4.1-slim bash
+
 # apiコンテナへ接続
 docker compose exec api bash
 
