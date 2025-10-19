@@ -2,29 +2,10 @@
 
 シンプルな TODO 管理用の Rails API アプリケーションです
 
-## 必要環境
-- Ruby 3.4.1
-- Bundler 2.6.7
-- SQLite3
-
-## セットアップ手順
-
-```bash
-# 依存関係のインストール
-bundle install
-
-# データベース初期化
-bin/rails db:migrate
-
-# テスト実行
-bin/rails test
-
-```
-
 ## 実行方法
 
 ```bash
-bin/rails server
+docker compose up -d api
 
 open http://127.0.0.1:3000
 ```
