@@ -73,3 +73,32 @@ curl -X DELETE http://127.0.0.1:3000/api/todos/1
   "updated_at": "2025-09-19T00:00:00.000Z"
 }
 ```
+
+## Rake タスク
+
+### Todos エクスポート
+
+すべての TODO を Markdown チェックリスト形式でエクスポートします。
+
+```bash
+# seed 実行
+docker compose exec api bin/rails db:seed
+
+# Docker 環境内で実行
+docker compose exec api bin/rake todos:export_markdown
+
+# またはローカル環境
+bin/rake todos:export_markdown
+```
+
+**出力形式:**
+```markdown
+# Todoリスト
+- [ ] 未完了のタスク1
+- [ ] 未完了のタスク2
+- [x] 完了したタスク1
+- [x] 完了したタスク2
+```
+
+**ファイル保存先:** `tmp/Todoリスト.md`
+```
