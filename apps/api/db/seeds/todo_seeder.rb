@@ -22,7 +22,7 @@ class TodoSeeder
       Todo.create!(
         title: todo_data[:title],
         description: todo_data[:description],
-        completed: [true, false].sample
+        completed: [ true, false ].sample
       )
     end
 
