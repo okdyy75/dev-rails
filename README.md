@@ -20,6 +20,10 @@ http://localhost:3001
 ## セットアップ
 
 ```bash
+# credentials 作成
+cd apps/api
+EDITOR="vi" bin/rails credentials:edit
+
 # イメージをビルド
 docker compose build
 
