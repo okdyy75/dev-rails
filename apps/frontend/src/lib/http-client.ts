@@ -1,7 +1,5 @@
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL;
-
 async function request(url: string, options: RequestInit = {}): Promise<Response> {
-  return fetch(`${BASE_URL}${url}`, {
+  return fetch(url, {
     headers: {
       'Content-Type': 'application/json',
       ...options.headers,
