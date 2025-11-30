@@ -24,22 +24,26 @@ class Api::TodosControllerTest < ActionDispatch::IntegrationTest
   test "should create todo" do
     assert_difference("Todo.count") do
       post api_todos_url,
-           params: { todo: { title: "Created todo", description: "Details" } },
+           params: { todo: { title: "Created todo", description: "Details", tags: [ "new", "task" ] } },
            as: :json
     end
 
     assert_response :created
+
+    body = JSON.parse(response.body)
+    assert_equal [ "new", "task" ], body["tags"]
   end
 
   test "should update todo" do
     patch api_todo_url(@todo),
-          params: { todo: { title: "Updated title", completed: true } },
+          params: { todo: { title: "Updated title", completed: true, tags: [ "updated" ] } },
           as: :json
     assert_response :success
 
     @todo.reload
     assert_equal "Updated title", @todo.title
     assert @todo.completed
+    assert_equal [ "updated" ], @todo.tags
   end
 
   test "should destroy todo" do

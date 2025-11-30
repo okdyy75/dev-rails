@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_12_144138) do
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tags", default: [], null: false, array: true
   end
 
   add_foreign_key "comments", "todos"

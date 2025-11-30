@@ -3,6 +3,7 @@ export interface Todo {
   title: string;
   description?: string;
   completed: boolean;
+  tags: string[];
   created_at: string;
   updated_at: string;
 }
@@ -10,10 +11,12 @@ export interface Todo {
 export interface CreateTodoRequest {
   title: string;
   description?: string;
+  tags?: string[];
 }
 
 export interface UpdateTodoRequest {
   title?: string;
   description?: string;
   completed?: boolean;
+  tags?: string[];
 }

@@ -2,8 +2,10 @@ one:
   title: "First todo"
   description: "Sample description"
   completed: false
+  tags: ["sample", "backend"]
 
 two:
   title: "Completed todo"
   description:
   completed: true
+  tags: ["done"]
