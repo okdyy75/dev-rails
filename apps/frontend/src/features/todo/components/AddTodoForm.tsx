@@ -8,15 +8,29 @@ interface AddTodoFormProps {
 }
 
 export default function AddTodoForm({ onAdd }: AddTodoFormProps) {
-  const { title, description, setTitle, setDescription, reset } = useTodoForm();
+  const {
+    title,
+    description,
+    tagsInput,
+    setTitle,
+    setDescription,
+    setTagsInput,
+    reset,
+  } = useTodoForm();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) return;
 
+    const tags = tagsInput
+      .split(',')
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
     onAdd({
       title: title.trim(),
       description: description.trim() || undefined,
+      tags: tags.length ? tags : undefined,
     });
     reset();
   };
@@ -52,6 +66,21 @@ export default function AddTodoForm({ onAdd }: AddTodoFormProps) {
           rows={2}
           className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
+      </div>
+
+      <div>
+        <label htmlFor="tags" className="block text-xs font-medium text-gray-700 mb-1">
+          タグ（カンマ区切り・任意）
+        </label>
+        <input
+          type="text"
+          id="tags"
+          value={tagsInput}
+          onChange={(e) => setTagsInput(e.target.value)}
+          placeholder="例: 家事, 仕事"
+          className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+        />
+        <p className="text-[11px] text-gray-500 mt-1">カンマ区切りで複数タグを入力できます</p>
       </div>
 
       <button

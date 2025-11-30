@@ -30,6 +30,18 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
             {todo.description}
           </p>
         )}
+        {todo.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-2" aria-label="タグ">
+            {todo.tags.map((tag) => (
+              <span
+                key={`${todo.id}-${tag}`}
+                className="inline-flex items-center px-2 py-0.5 text-[11px] font-medium bg-blue-50 text-blue-700 rounded-full border border-blue-100"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
       <button
         onClick={(e) => {
